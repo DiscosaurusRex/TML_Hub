@@ -188,3 +188,7 @@ body:not(.player-expanded) .artwork img{filter:none!important;transform:none!imp
   .countdown-unit{padding:.65rem .12rem .55rem}
   .countdown-unit span{font-size:.52rem;letter-spacing:.07em}
 }
+
+.footer-sources{display:block;margin-top:.55rem;color:#aa9ca5;line-height:1.55}
+.footer-sources a{color:#d6b975;font-size:inherit;text-decoration:underline;text-decoration-color:rgba(214,185,117,.4);text-underline-offset:2px}
+.footer-sources a:hover,.footer-sources a:focus-visible{color:var(--bright);text-decoration-color:currentColor}
