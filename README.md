@@ -3,10 +3,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-f2c86b.svg)](LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/DiscosaurusRex/TML_Hub)](https://github.com/DiscosaurusRex/TML_Hub/commits)
 [![GitHub issues](https://img.shields.io/github/issues/DiscosaurusRex/TML_Hub)](https://github.com/DiscosaurusRex/TML_Hub/issues)
+[![Live site](https://img.shields.io/badge/GitHub%20Pages-Open%20TML%20Hub-8a4fff?logo=github)](https://discosaurusrex.github.io/TML_Hub/)
 [![Progressive Web App](https://img.shields.io/badge/PWA-ready-5a0fc8?logo=pwa&logoColor=white)](manifest.webmanifest)
 [![Vanilla JavaScript](https://img.shields.io/badge/JavaScript-vanilla-f7df1e?logo=javascript&logoColor=111)](script.js)
 
 An unofficial, community-built hub for festival live streams, One World Radio, and Tomorrowland schedule discovery.
+
+**Live site:** [discosaurusrex.github.io/TML_Hub](https://discosaurusrex.github.io/TML_Hub/)
 
 > [!IMPORTANT]
 > TML Hub is an independent community project. It is not affiliated with, endorsed by, sponsored by, or officially connected to Tomorrowland, WEAREONE.world, or One World Radio.
