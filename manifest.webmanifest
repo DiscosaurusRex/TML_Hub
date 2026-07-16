@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "TML Hub — Community Streams",
+  "short_name": "TML Hub",
+  "description": "An unofficial community hub for Tomorrowland streams and One World Radio. Not affiliated with Tomorrowland or One World Radio.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#170b1d",
+  "theme_color": "#170b1d",
+  "icons": [
+    { "src": "android-chrome-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

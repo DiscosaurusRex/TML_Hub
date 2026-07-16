@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="TML Hub is an unofficial community hub for Tomorrowland streams and One World Radio." />
+    <meta name="theme-color" content="#170b1d" />
+    <meta name="application-name" content="TML Hub" />
+    <title>TML Hub — Community Streams</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="player-dock.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-left"></div><div class="ambient ambient-right"></div>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="TML Hub home"><img class="brand-mark" src="android-chrome-192x192.png" width="28" height="28" alt="" /><span>TML Hub</span></a>
+      <nav class="header-nav" aria-label="Primary navigation"><a class="header-link" href="#main-stream">Live streams</a><a class="header-link" href="#schedule">Schedule</a><a class="header-link github-link" href="https://github.com/DiscosaurusRex/TML_Hub" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.62-3.37-1.21-3.37-1.21-.45-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.31 9.31 0 0 1 12 6.83c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.95-2.35 4.81-4.58 5.07.36.32.68.93.68 1.88 0 1.36-.01 2.45-.01 2.79 0 .27.18.59.69.49A10.25 10.25 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z" /></svg><span>GitHub</span></a></nav>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow"><span></span> Your community stream guide</p>
+        <h1>Your portal to the <em class="magic-word" aria-label="magic.">magic.</em></h1>
+        <p class="hero-copy">Tune into One World Radio and discover the latest festival sets, all gathered in one beautiful little corner of the internet.</p>
+        <p class="dock-cue"><i></i> One World Radio is always with you in the player below.</p>
+        <a class="button" href="#radio">Listen now <span aria-hidden="true">↓</span></a>
+      </section>
+      <section class="main-stream-section" id="main-stream" aria-labelledby="main-stream-title">
+        <div class="section-heading"><div><p class="eyebrow"><span></span> Live from the festival</p><h2 id="main-stream-title">Live Streams</h2></div><p class="main-stream-note">Choose a broadcast below to watch it in the main player.</p></div>
+        <div class="live-stream-primary-heading"><div><p class="label">Now watching</p><h3 id="active-stream-title">Main Stream</h3></div><p id="active-stream-meta">Official festival broadcast</p></div>
+        <div class="main-stream-frame" id="main-stream-frame"><iframe id="main-stream-iframe" title="Festival main live stream" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden></iframe><div class="main-stream-placeholder" id="main-stream-placeholder"><span aria-hidden="true">◇</span><p>Main stream coming soon</p></div></div>
+        <div class="live-streams-heading"><div><p class="label">Available broadcasts</p><h3>Choose a stream</h3></div><p>Select a stream to move it into the main player.</p></div>
+        <div class="stage-streams live-stream-options" id="stage-streams" aria-label="Live stream choices" aria-live="polite"></div>
+      </section>
+      <section class="radio-section" id="radio" aria-labelledby="radio-title">
+        <div class="section-heading"><div><p class="eyebrow"><span></span> Broadcasting live</p><h2 id="radio-title">One World Radio</h2></div><div class="live-pill"><i></i> Live now</div></div>
+        <article class="radio-player">
+          <div class="artwork"><img id="artwork-image" alt="Current track artwork" /><img id="artwork-next" alt="" aria-hidden="true" /></div>
+          <div class="now-playing"><p class="label">Now playing</p><div class="track-title-marquee" id="track-title-marquee"><h3 id="track-title">One World Radio</h3></div><div class="artist-marquee" id="artist-marquee"><p id="track-artist">Loading live broadcast details…</p></div><p class="show-name" id="show-name" hidden></p><p class="artwork-credit">Artwork from <a href="https://www.tomorrowland.com/article/website-terms-of-use/" target="_blank" rel="noreferrer">Tomorrowland metadata</a> · © respective rights holders</p></div>
+          <div class="player-controls">
+            <button class="play-button" id="play-button" type="button" aria-label="Play One World Radio" aria-pressed="false"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.3v13.4L18.5 12 8 5.3Z" /></svg><svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zm7 0h3v14h-3z" /></svg></button><p class="live-marker"><i></i> Live</p>
+          </div><div class="right-controls"><div class="player-utilities"><button class="player-action" id="history-button" type="button" aria-controls="history-panel" aria-expanded="false">History</button><button class="player-action" id="expand-button" type="button" aria-pressed="false">Expand</button></div><div class="volume-control"><span class="sr-only">Volume</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h4l5 4V6l-5 4H3Z" /><path d="M15 9.2a4 4 0 0 1 0 5.6v2.3a6 6 0 0 0 0-10.2v2.3Z" /></svg><div class="volume-slider" id="volume-slider" role="slider" tabindex="0" aria-label="Radio volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span class="volume-range" id="volume-range"></span><span class="volume-handle" id="volume-handle"></span></div><output id="volume-output">70%</output></div></div><div class="station-switcher" data-active="0" role="group" aria-label="Choose radio station"><span class="station-indicator" aria-hidden="true"></span><button class="station-choice" type="button" data-station="0" aria-pressed="true">One World</button><button class="station-choice" type="button" data-station="1" aria-pressed="false">Anthems</button><button class="station-choice" type="button" data-station="2" aria-pressed="false">Daybreak</button></div><p class="player-status" id="player-status" aria-live="polite"></p>
+        </article>
+        <aside class="history-panel" id="history-panel" aria-label="Recent tracks" hidden><div class="history-heading"><div><p class="label">Recently played</p><h3>Song history</h3></div><button class="close-history" id="close-history" type="button" aria-label="Close song history">&times;</button></div><ol id="history-list"></ol></aside>
+        <audio id="radio-audio" preload="none" crossorigin="anonymous"><source src="https://27743.live.streamtheworld.com/OWR_INTERNATIONAL.mp3?gdpr=0&amp;gdpr_consent=undefined" type="audio/mpeg" /></audio>
+      </section>
+      <section class="schedule-section" id="schedule" aria-labelledby="schedule-title">
+        <div class="section-heading schedule-heading"><div><p class="eyebrow"><span></span> Plan your journey</p><h2 id="schedule-title">Festival schedule</h2></div><p class="schedule-note">Unofficial schedule view · Belgium time · select a set for artist details</p></div>
+        <div class="schedule-controls" aria-label="Schedule navigation"><div class="schedule-week-tabs" id="schedule-week-tabs" role="group" aria-label="Festival weekend"></div><div class="schedule-day-tabs" id="schedule-day-tabs" role="group" aria-label="Festival day"></div></div>
+        <div class="schedule-archive" hidden><div class="schedule-feature" id="schedule-feature" aria-live="polite"></div></div>
+        <div class="schedule-list-heading"><div><p class="label">Schedule timeline</p><h3 id="schedule-day-title">Loading schedule…</h3></div><div class="schedule-filters"><label class="artist-search" for="schedule-artist-search"><span>Artist</span><input id="schedule-artist-search" type="search" autocomplete="off" placeholder="Search artists" aria-controls="schedule-list" /><button class="artist-search-clear" id="artist-search-clear" type="button" hidden aria-label="Clear artist search">×</button></label><div class="schedule-stage-filter-label"><span>Stage</span><div class="schedule-stage-select" id="schedule-stage-select"><button class="schedule-stage-filter" id="schedule-stage-filter" type="button" aria-haspopup="listbox" aria-controls="schedule-stage-options" aria-expanded="false">All stages</button><div class="schedule-stage-options" id="schedule-stage-options" role="listbox" hidden></div></div></div></div></div>
+        <div class="schedule-list" id="schedule-list" aria-live="polite"></div>
+        <dialog class="artist-dialog" id="artist-dialog" aria-labelledby="artist-dialog-title"><article class="artist-dialog-card"><button class="artist-dialog-close" id="artist-dialog-close" type="button" aria-label="Close artist details">×</button><div id="artist-dialog-content"></div></article></dialog>
+      </section>
+    </main>
+    <footer><span class="brand"><img class="brand-mark" src="android-chrome-192x192.png" width="28" height="28" alt="" /> TML Hub</span><p>Unofficial community project. Not affiliated with, endorsed by, or connected to Tomorrowland or One World Radio.</p><a href="https://www.tomorrowland.com/" target="_blank" rel="noreferrer">Official Tomorrowland <span aria-hidden="true">↗</span></a></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
