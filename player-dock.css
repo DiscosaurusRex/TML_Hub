@@ -2034,3 +2034,26 @@ body.player-expanded .radio-player {
   inset: 0 !important;
   z-index: 200 !important;
 }
+
+/* History always sits above the player and fits in the space above the dock. */
+:root {
+  --history-top-clearance: calc(max(0.65rem, env(safe-area-inset-top)) + 80px);
+}
+
+body:not(.player-expanded) .history-panel {
+  top: auto !important;
+  bottom: calc(var(--player-dock-height) + env(safe-area-inset-bottom) + 12px) !important;
+  max-height: calc(100vh - var(--player-dock-height) - env(safe-area-inset-bottom) - var(--history-top-clearance) - 12px) !important;
+  max-height: min(65dvh, max(0px, calc(100dvh - var(--player-dock-height) - env(safe-area-inset-bottom) - var(--history-top-clearance) - 12px))) !important;
+  overscroll-behavior: contain;
+}
+
+body.player-expanded .history-panel {
+  z-index: 201 !important;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --history-top-clearance: calc(max(0.65rem, env(safe-area-inset-top)) + 106px);
+  }
+}
