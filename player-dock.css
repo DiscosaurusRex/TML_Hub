@@ -2057,3 +2057,22 @@ body.player-expanded .history-panel {
     --history-top-clearance: calc(max(0.65rem, env(safe-area-inset-top)) + 106px);
   }
 }
+
+/* Expanded player behaves like a modal: lock the page while history remains scrollable. */
+html.player-expanded {
+  overflow: hidden !important;
+  overscroll-behavior: none;
+}
+
+html.player-expanded body {
+  position: fixed;
+  right: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden !important;
+  overscroll-behavior: none;
+}
+
+html.player-expanded .history-panel {
+  overscroll-behavior: contain;
+}

@@ -1,4 +1,4 @@
-const CACHE = 'tml-hub-v25';
+const CACHE = 'tml-hub-v26';
 const APP_SHELL = ['./', './index.html', './styles.css', './player-dock.css', './script.js', './week1.json', './week2.json', './manifest.webmanifest', './tml_hub_icon.png', './favicon.ico', './favicon-16x16.png', './favicon-32x32.png', './apple-touch-icon.png', './android-chrome-192x192.png', './android-chrome-512x512.png'];
 
 self.addEventListener('install', (event) => {
