@@ -90,7 +90,7 @@ Multiple URLs can be supplied in `streams`; the player will try the next URL if 
 
 ### Festival schedule
 
-Schedule data is loaded from the configured remote sources first, with `week1.json` and `week2.json` acting as local fallbacks. Schedule entries use fields such as:
+Schedule data is loaded directly from the configured Tomorrowland lineup endpoints. A network connection is required to load the schedule. Schedule entries use fields such as:
 
 - `date`
 - `startTime` and `endTime`
@@ -108,7 +108,6 @@ Artist entries may include an image and supported social-profile URLs. The inter
 | `styles.css` | Site layout, stream section, schedule, and responsive styles |
 | `player-dock.css` | Docked and expanded radio-player layouts |
 | `script.js` | Streams, radio playback, metadata, schedule rendering, and interactions |
-| `week1.json` / `week2.json` | Local schedule fallbacks |
 | `manifest.webmanifest` | Progressive Web App metadata and icons |
 | `service-worker.js` | App-shell caching and offline behavior |
 
