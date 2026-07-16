@@ -5,7 +5,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/DiscosaurusRex/TML_Hub)](https://github.com/DiscosaurusRex/TML_Hub/issues)
 [![Live site](https://img.shields.io/badge/GitHub%20Pages-Open%20TML%20Hub-8a4fff?logo=github)](https://discosaurusrex.github.io/TML_Hub/)
 [![Progressive Web App](https://img.shields.io/badge/PWA-ready-5a0fc8?logo=pwa&logoColor=white)](manifest.webmanifest)
-[![Vanilla JavaScript](https://img.shields.io/badge/JavaScript-vanilla-f7df1e?logo=javascript&logoColor=111)](script.js)
+[![Vanilla JavaScript](https://img.shields.io/badge/JavaScript-vanilla-f7df1e?logo=javascript&logoColor=111)](js/script.js)
 
 An unofficial, community-built hub for festival live streams, One World Radio, and Tomorrowland schedule discovery.
 
@@ -57,22 +57,97 @@ Opening `index.html` directly may prevent schedule requests, embedded players, o
 
 ## Configuration
 
-Most runtime configuration lives near the top of `script.js`.
+Most runtime configuration lives near the top of `js/script.js`.
 
 ### Live streams
 
-`mainStreamEmbed` defines the stream shown in the primary player by default. Additional named streams can be added to `stageStreamEmbeds`:
+Stream configuration lives near the top of [`js/script.js`](js/script.js). The site uses one large primary player and a set of smaller stream-selection cards beneath it. Selecting a card loads that broadcast into the primary player.
+
+#### 1. Find an embeddable URL
+
+Use the provider's iframe or embed URL, not the ordinary page URL. For YouTube, copy the video ID and use this format:
+
+```text
+https://www.youtube.com/embed/VIDEO_ID
+```
+
+For example, convert:
+
+```text
+https://www.youtube.com/watch?v=abc123
+```
+
+to:
+
+```text
+https://www.youtube.com/embed/abc123
+```
+
+The privacy-enhanced `https://www.youtube-nocookie.com/embed/VIDEO_ID` format is also supported. Other providers can be used when they offer an HTTPS iframe URL and permit embedding on the deployed domain.
+
+#### 2. Set the default stream
+
+`mainStreamEmbed` defines the broadcast shown in the large player when the page first loads:
 
 ```js
 const mainStreamEmbed = 'https://www.youtube.com/embed/VIDEO_ID';
+```
 
+This stream also appears as the first option under the player with the label `Main Stream`.
+
+#### 3. Add the other available streams
+
+Add each additional broadcast to `stageStreamEmbeds`. The property is the visible stream name and the value is its embed URL:
+
+```js
 const stageStreamEmbeds = {
-  'Freedom Stage': 'https://www.youtube.com/embed/ANOTHER_VIDEO_ID',
-  'Weekend Stream': 'https://player.example.com/embed/STREAM_ID',
+  'Freedom Stage': 'https://www.youtube.com/embed/FREEDOM_VIDEO_ID',
+  'Crystal Garden': 'https://www.youtube.com/embed/CRYSTAL_VIDEO_ID',
 };
 ```
 
-Only entries with a valid URL are displayed. Selecting one promotes it into the main player.
+Cards appear in the same order as these entries, after `Main Stream`. Keep the list to broadcasts that are actually available; unused placeholders are not necessary. Entries with `null`, an empty string, or another missing value are hidden.
+
+If a name contains uppercase ` BY `, the interface separates the sponsor automatically. For example:
+
+```js
+'FREEDOM BY BUD': 'https://www.youtube.com/embed/VIDEO_ID'
+```
+
+is displayed as `FREEDOM` with `Presented by BUD` beneath it.
+
+#### Connecting a stream to the schedule
+
+Use the exact `stage.name` supplied by the schedule endpoint when a broadcast belongs to a particular stage. Matching is case-sensitive. An exact match allows stage actions in the schedule to send the visitor to that stream:
+
+```js
+const stageStreamEmbeds = {
+  'FREEDOM STAGE': 'https://www.youtube.com/embed/VIDEO_ID',
+};
+```
+
+Generic names such as `Weekend Stream` also work as stream cards, but they will not be associated with a schedule stage.
+
+#### Testing a stream
+
+1. Start the site through a local HTTP server rather than opening `index.html` directly.
+2. Confirm the default broadcast loads in the large player.
+3. Confirm every smaller stream card moves its broadcast into the large player when selected.
+4. Test playback on both desktop and mobile widths.
+5. Check the browser console for iframe, permission, or content-security errors.
+6. Increment `CACHE` in `service-worker.js` before deployment so returning visitors receive the updated `js/script.js` file.
+
+If an older URL remains after a change, unregister the site's service worker or clear its stored site data, then reload.
+
+#### Common problems
+
+- **Video unavailable:** The provider may have disabled embedding, the broadcast may not have started, or the URL may be a watch-page URL instead of an embed URL.
+- **Refused to display in a frame:** The provider blocks third-party embedding through its security headers. A different official embed source is required.
+- **Works locally but not on GitHub Pages:** Confirm the source uses HTTPS and permits embedding on `discosaurusrex.github.io`.
+- **Schedule button does not find the stream:** Make the `stageStreamEmbeds` key exactly match the schedule's `stage.name`, including capitalization and spacing.
+- **Old stream still appears:** Increase the service-worker cache version and reload after the new deployment becomes available.
+
+Stream URLs included in client-side JavaScript are public. Never place private API keys, account credentials, or provider secrets in this configuration. Only add broadcasts you are permitted to embed, and remove or replace links when an event ends or a provider requests it.
 
 ### Radio stations
 
@@ -105,9 +180,10 @@ Artist entries may include an image and supported social-profile URLs. The inter
 | Path | Purpose |
 | --- | --- |
 | `index.html` | Page structure, player markup, navigation, and dialogs |
-| `styles.css` | Site layout, stream section, schedule, and responsive styles |
-| `player-dock.css` | Docked and expanded radio-player layouts |
-| `script.js` | Streams, radio playback, metadata, schedule rendering, and interactions |
+| `css/styles.css` | Site layout, stream section, schedule, and responsive styles |
+| `css/player-dock.css` | Docked and expanded radio-player layouts |
+| `js/script.js` | Streams, radio playback, metadata, schedule rendering, and interactions |
+| `assets/` | Favicons, install icons, and fallback artwork |
 | `manifest.webmanifest` | Progressive Web App metadata and icons |
 | `service-worker.js` | App-shell caching and offline behavior |
 

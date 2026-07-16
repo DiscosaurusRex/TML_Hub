@@ -1,5 +1,5 @@
-const CACHE = 'tml-hub-v28';
-const APP_SHELL = ['./', './index.html', './styles.css', './player-dock.css', './script.js', './manifest.webmanifest', './tml_hub_icon.png', './favicon.ico', './favicon-16x16.png', './favicon-32x32.png', './apple-touch-icon.png', './android-chrome-192x192.png', './android-chrome-512x512.png'];
+const CACHE = 'tml-hub-v30';
+const APP_SHELL = ['./', './index.html', './css/styles.css', './css/player-dock.css', './js/script.js', './manifest.webmanifest', './assets/tml_hub_icon.png', './assets/favicon.ico', './assets/favicon-16x16.png', './assets/favicon-32x32.png', './assets/apple-touch-icon.png', './assets/android-chrome-192x192.png', './assets/android-chrome-512x512.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(APP_SHELL)));
