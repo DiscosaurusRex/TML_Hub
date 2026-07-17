@@ -2064,6 +2064,11 @@ html.player-expanded {
   overscroll-behavior: none;
 }
 
+html.player-scroll-restoring {
+  scroll-behavior: auto !important;
+  overflow-anchor: none;
+}
+
 html.player-expanded body {
   position: fixed;
   right: 0;
@@ -2075,4 +2080,189 @@ html.player-expanded body {
 
 html.player-expanded .history-panel {
   overscroll-behavior: contain;
+}
+
+@media (max-width: 899px) {
+  body.player-expanded .live-marker i {
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: var(--gold) !important;
+    box-shadow: 0 0 0 4px rgba(226, 168, 76, 0.1) !important;
+  }
+}
+
+@media (max-width: 699px) {
+  body.player-expanded .live-marker i {
+    width: 6px !important;
+    height: 6px !important;
+    box-shadow: 0 0 0 3px rgba(226, 168, 76, 0.1) !important;
+  }
+}
+
+/* Compact dock: keep the immersive player unchanged while returning more page height. */
+@media (min-width: 1100px) {
+  :root { --player-dock-height: 180px; }
+  body { padding-bottom: var(--player-dock-height); }
+  body:not(.player-expanded) .radio-player {
+    height: var(--player-dock-height) !important;
+    min-height: var(--player-dock-height) !important;
+    grid-template-columns: clamp(120px, 12vw, 180px) minmax(0, 1fr) clamp(250px, 20vw, 340px) !important;
+    grid-template-rows: 126px 53px !important;
+  }
+  body:not(.player-expanded) .artwork {
+    width: clamp(92px, 8vw, 108px) !important;
+    height: clamp(92px, 8vw, 108px) !important;
+    margin-left: clamp(24px, 3vw, 44px) !important;
+  }
+  body:not(.player-expanded) .now-playing { padding: 0 clamp(1rem, 2vw, 2rem) !important; }
+  body:not(.player-expanded) .now-playing .label { margin-bottom: 0.35rem !important; font-size: 0.64rem !important; }
+  body:not(.player-expanded) .now-playing h3 { margin-bottom: 0.25rem !important; font-size: clamp(1.15rem, 1.6vw, 1.6rem) !important; }
+  body:not(.player-expanded) #track-artist { font-size: clamp(0.86rem, 1vw, 1rem) !important; }
+  body:not(.player-expanded) .show-name { margin-top: 0.3rem !important; font-size: clamp(0.7rem, 0.8vw, 0.82rem) !important; }
+  body:not(.player-expanded) .player-controls { top: 63px !important; width: 100px !important; gap: 0.35rem !important; }
+  body:not(.player-expanded) .play-button { width: 72px !important; height: 72px !important; }
+  body:not(.player-expanded) .play-button svg { width: 30px !important; height: 30px !important; }
+  body:not(.player-expanded) .live-marker { font-size: 0.65rem !important; }
+  body:not(.player-expanded) .live-marker::before,
+  body:not(.player-expanded) .live-marker::after { width: 18px !important; }
+  body:not(.player-expanded) .right-controls { padding: 20px clamp(28px, 3vw, 48px) 20px 8px !important; }
+  body:not(.player-expanded) .player-action { padding: 0 0.75rem !important; font-size: clamp(0.75rem, 0.9vw, 0.88rem) !important; }
+  body:not(.player-expanded) .right-controls .volume-control { grid-template-columns: 18px minmax(110px, 1fr) !important; grid-template-rows: 20px !important; gap: 0.6rem !important; }
+  body:not(.player-expanded) .right-controls .volume-control svg { width: 18px !important; height: 18px !important; }
+  body:not(.player-expanded) .right-controls .volume-handle { width: 18px !important; height: 18px !important; }
+  body:not(.player-expanded) .station-switcher { height: 53px !important; padding: 9px 0 !important; }
+  body:not(.player-expanded) .station-indicator { top: 9px !important; bottom: 9px !important; }
+  body:not(.player-expanded) .station-choice { padding: 0.4rem 0.8rem !important; font-size: clamp(0.78rem, 1vw, 0.92rem) !important; }
+}
+
+@media (min-width: 700px) and (max-width: 1099px) {
+  :root { --player-dock-main-height: clamp(112px, 13vw, 132px); --player-dock-height: calc(var(--player-dock-main-height) + 52px); }
+  body { padding-bottom: var(--player-dock-height); }
+  body:not(.player-expanded) .radio-player {
+    height: var(--player-dock-height) !important;
+    min-height: var(--player-dock-height) !important;
+    grid-template-columns: clamp(112px, 15vw, 156px) minmax(0, 1fr) clamp(170px, 22vw, 220px) !important;
+    grid-template-rows: var(--player-dock-main-height) 51px !important;
+  }
+  body:not(.player-expanded) .artwork { width: clamp(82px, 10vw, 104px) !important; height: clamp(82px, 10vw, 104px) !important; margin-left: clamp(1.1rem, 2.5vw, 2rem) !important; }
+  body:not(.player-expanded) .now-playing { padding: 0 0.8rem !important; }
+  body:not(.player-expanded) .now-playing .label { margin-bottom: 0.25rem !important; font-size: 0.58rem !important; }
+  body:not(.player-expanded) .now-playing h3 { margin-bottom: 0.2rem !important; font-size: clamp(1.02rem, 2vw, 1.35rem) !important; }
+  body:not(.player-expanded) #track-artist { font-size: clamp(0.78rem, 1.35vw, 0.94rem) !important; }
+  body:not(.player-expanded) .show-name { margin-top: 0.25rem !important; font-size: clamp(0.64rem, 1vw, 0.76rem) !important; }
+  body:not(.player-expanded) .player-controls { top: clamp(56px, 6.5vw, 66px) !important; width: 86px !important; gap: 0.25rem !important; }
+  body:not(.player-expanded) .play-button { width: clamp(62px, 7vw, 72px) !important; height: clamp(62px, 7vw, 72px) !important; }
+  body:not(.player-expanded) .play-button svg { width: 27px !important; height: 27px !important; }
+  body:not(.player-expanded) .live-marker { font-size: 0.6rem !important; }
+  body:not(.player-expanded) .live-marker::before,
+  body:not(.player-expanded) .live-marker::after { width: 14px !important; }
+  body:not(.player-expanded) .right-controls { padding: 16px clamp(16px, 2.4vw, 28px) 16px 0 !important; }
+  body:not(.player-expanded) .player-action { padding: 0 0.4rem !important; font-size: clamp(0.64rem, 1vw, 0.74rem) !important; }
+  body:not(.player-expanded) .station-switcher { height: 51px !important; padding: 8px 0 !important; }
+  body:not(.player-expanded) .station-indicator { top: 8px !important; bottom: 8px !important; }
+  body:not(.player-expanded) .station-choice { padding: 0.35rem 0.6rem !important; font-size: clamp(0.7rem, 1.15vw, 0.82rem) !important; }
+}
+
+@media (max-width: 699px) {
+  :root { --player-dock-height: 206px; }
+  body { padding-bottom: var(--player-dock-height); }
+  body:not(.player-expanded) .radio-player {
+    height: var(--player-dock-height) !important;
+    min-height: var(--player-dock-height) !important;
+    grid-template-rows: 70px 44px 30px 57px !important;
+    padding-top: 0.25rem !important;
+  }
+  body:not(.player-expanded) .artwork { width: clamp(56px, 17vw, 64px) !important; height: clamp(56px, 17vw, 64px) !important; }
+  body:not(.player-expanded) .now-playing .label { margin-bottom: 0.12rem !important; font-size: 0.5rem !important; }
+  body:not(.player-expanded) .now-playing h3 { margin-bottom: 0.12rem !important; font-size: clamp(0.94rem, 3.8vw, 1.12rem) !important; }
+  body:not(.player-expanded) #track-artist { font-size: clamp(0.72rem, 2.9vw, 0.84rem) !important; }
+  body:not(.player-expanded) .show-name { margin-top: 0.12rem !important; font-size: clamp(0.58rem, 2.2vw, 0.68rem) !important; }
+  body:not(.player-expanded) .play-button { width: 42px !important; height: 42px !important; }
+  body:not(.player-expanded) .play-button svg { width: 22px !important; height: 22px !important; }
+  body:not(.player-expanded) .live-marker { font-size: 0.62rem !important; }
+  body:not(.player-expanded) .player-action { font-size: clamp(0.58rem, 2.1vw, 0.68rem) !important; }
+  body:not(.player-expanded) .station-switcher { padding: 7px 1rem !important; }
+  body:not(.player-expanded) .station-indicator { top: 7px !important; bottom: 7px !important; }
+  body:not(.player-expanded) .station-choice { padding: 0.3rem 0.12rem !important; font-size: clamp(0.55rem, 2vw, 0.68rem) !important; }
+}
+
+/* Expanded artwork atmosphere: cover fills without changing the image's aspect ratio. */
+.expanded-artwork-backdrop { display: none; }
+body.player-expanded .radio-player {
+  isolation: isolate;
+  overflow: hidden !important;
+  background: #170b1d !important;
+}
+body.player-expanded .expanded-artwork-backdrop {
+  position: absolute !important;
+  z-index: 0 !important;
+  inset: -36px !important;
+  display: block !important;
+  overflow: hidden;
+  pointer-events: none;
+}
+body.player-expanded .expanded-artwork-backdrop img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.82;
+  filter: blur(28px) saturate(1.18) brightness(0.72);
+  transform: scale(1.08);
+}
+body.player-expanded .expanded-artwork-backdrop::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 28% 35%, rgba(74, 24, 57, 0.08), rgba(18, 7, 24, 0.48) 72%),
+    linear-gradient(110deg, rgba(41, 12, 35, 0.42), rgba(13, 5, 20, 0.62));
+}
+body.player-expanded .radio-player > :not(.expanded-artwork-backdrop) { z-index: 2; }
+
+/* Cast sits beside playback and is only exposed when the sender SDK finds a receiver. */
+.playback-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+}
+google-cast-launcher:not(:defined) { display: none; }
+.cast-button {
+  display: none;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  color: var(--bright);
+  background: rgba(23, 11, 29, 0.46);
+  border: 1px solid rgba(255, 213, 126, 0.34);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  --connected-color: var(--bright);
+  --disconnected-color: var(--bright);
+}
+.cast-button.is-ready { display: block; }
+.cast-button:hover {
+  background: rgba(255, 213, 126, 0.14);
+  border-color: rgba(255, 213, 126, 0.66);
+  transform: scale(1.05);
+}
+.cast-button.is-connected {
+  background: rgba(255, 213, 126, 0.18);
+  border-color: var(--bright);
+}
+body:not(.player-expanded) .player-controls,
+body.player-expanded .player-controls { width: auto !important; }
+body.player-expanded .cast-button { width: 46px; height: 46px; padding: 9px; }
+
+@media (max-width: 699px) {
+  .playback-actions { gap: 0.35rem; }
+  body:not(.player-expanded) .cast-button { width: 34px; height: 34px; padding: 7px; }
+  body.player-expanded .cast-button { width: 38px; height: 38px; padding: 8px; }
 }
