@@ -1,5 +1,5 @@
-const CACHE = 'tml-hub-v44';
-const APP_SHELL = ['./', './index.html?v=44', './css/styles.css?v=44', './css/player-dock.css?v=44', './js/script.js?v=44', './manifest.webmanifest', './assets/tml_hub_icon.png', './assets/favicon.ico', './assets/favicon-16x16.png', './assets/favicon-32x32.png', './assets/apple-touch-icon.png', './assets/android-chrome-192x192.png', './assets/android-chrome-512x512.png'];
+const CACHE = 'tml-hub-v49';
+const APP_SHELL = ['./', './index.html?v=49', './css/styles.css?v=49', './css/player-dock.css?v=49', './css/modern-ui.css?v=49', './js/script.js?v=49', './manifest.webmanifest', './assets/tml_hub_icon.png', './assets/favicon.ico', './assets/favicon-16x16.png', './assets/favicon-32x32.png', './assets/apple-touch-icon.png', './assets/android-chrome-192x192.png', './assets/android-chrome-512x512.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(APP_SHELL)));
@@ -28,7 +28,7 @@ self.addEventListener('fetch', (event) => {
       if (response.ok) await cache.put(event.request, response.clone());
       return response;
     } catch (_) {
-      return (await cache.match(event.request)) || (event.request.mode === 'navigate' ? cache.match('./index.html?v=44') : undefined) || Response.error();
+      return (await cache.match(event.request)) || (event.request.mode === 'navigate' ? cache.match('./index.html?v=49') : undefined) || Response.error();
     }
   })());
 });
