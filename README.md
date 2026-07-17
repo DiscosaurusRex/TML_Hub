@@ -182,6 +182,7 @@ Artist entries may include an image and supported social-profile URLs. The inter
 | `index.html` | Page structure, player markup, navigation, and dialogs |
 | `css/styles.css` | Site layout, stream section, schedule, and responsive styles |
 | `css/player-dock.css` | Docked and expanded radio-player layouts |
+| `css/modern-ui.css` | Cosmic violet theme layer and responsive visual polish |
 | `js/script.js` | Streams, radio playback, metadata, schedule rendering, and interactions |
 | `assets/` | Favicons, install icons, and fallback artwork |
 | `manifest.webmanifest` | Progressive Web App metadata and icons |
