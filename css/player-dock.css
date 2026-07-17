@@ -2231,23 +2231,28 @@ body.player-expanded .radio-player > :not(.expanded-artwork-backdrop) { z-index:
   justify-content: center;
   gap: 0.55rem;
 }
-google-cast-launcher:not(:defined) { display: none; }
 .cast-button {
-  display: none;
+  display: grid;
+  place-items: center;
+  grid-auto-flow: column;
   flex: 0 0 auto;
-  width: 40px;
+  width: auto;
+  min-width: 70px;
   height: 40px;
-  padding: 8px;
+  gap: 0.4rem;
+  padding: 0 0.8rem;
   color: var(--bright);
   background: rgba(23, 11, 29, 0.46);
   border: 1px solid rgba(255, 213, 126, 0.34);
-  border-radius: 50%;
+  border-radius: 999px;
+  font: 700 0.68rem "DM Sans", sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   cursor: pointer;
   transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
-  --connected-color: var(--bright);
-  --disconnected-color: var(--bright);
 }
-.cast-button.is-ready { display: block; }
+.cast-button svg { width: 18px; height: 18px; fill: currentColor; }
+.cast-button[data-cast-state="loading"] { opacity: 0.72; }
 .cast-button:hover {
   background: rgba(255, 213, 126, 0.14);
   border-color: rgba(255, 213, 126, 0.66);
@@ -2259,10 +2264,11 @@ google-cast-launcher:not(:defined) { display: none; }
 }
 body:not(.player-expanded) .player-controls,
 body.player-expanded .player-controls { width: auto !important; }
-body.player-expanded .cast-button { width: 46px; height: 46px; padding: 9px; }
+body.player-expanded .cast-button { width: auto; min-width: 78px; height: 46px; padding: 0 0.9rem; }
 
 @media (max-width: 699px) {
   .playback-actions { gap: 0.35rem; }
-  body:not(.player-expanded) .cast-button { width: 34px; height: 34px; padding: 7px; }
-  body.player-expanded .cast-button { width: 38px; height: 38px; padding: 8px; }
+  .cast-button span { display: none; }
+  body:not(.player-expanded) .cast-button { width: 34px; min-width: 34px; height: 34px; padding: 7px; }
+  body.player-expanded .cast-button { width: 38px; min-width: 38px; height: 38px; padding: 8px; }
 }
